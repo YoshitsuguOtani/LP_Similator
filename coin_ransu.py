@@ -1,6 +1,6 @@
 import random
 import matplotlib.pyplot as plt
-#import japanize_matplotlib  # 日本語表示用
+import japanize_matplotlib  # 日本語表示用
 
 def flip_coin(bias=0.5):
     """
@@ -11,7 +11,7 @@ def flip_coin(bias=0.5):
     return random.random() < bias
 
 # パラメータ設定
-flips = 10000  # 試行回数
+flips = 100000  # 試行回数
 bias = 0.5    # 表が出る確率
 heads = 0     # 表が出た回数
 
@@ -29,7 +29,8 @@ counts = [heads, tails]
 colors = ['#2ecc71', '#e74c3c']  # 緑と赤
 
 # 棒グラフの作成
-plt.bar(labels, counts, color=colors)
+plt.pie(counts, labels=labels, colors=colors, autopct='%1.1f%%',
+        startangle=90)
 
 # グラフの設定
 plt.title(f'コイントスのシミュレーション結果\n(試行回数: {flips}, バイアス: {bias})')
